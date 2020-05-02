@@ -21,7 +21,7 @@ BUCKET="bucket" #replace with your bucket name
 /usr/bin/mongodump --host $HOST_MONGO --port $PORT_MONGO -u $USER_MONGO --password $PASS_MONGO --authenticationDatabase $AUTH_MONGO -o $PATH/mongodb-$TIMESTAMP 
 
 #Backup folder compression
-/usr/bin/tar -czvf mongodb-$TIMESTAMP.tar.gz mongodb-$TIMESTAMP
+/usr/bin/tar -czvf $PATH/mongodb-$TIMESTAMP.tar.gz $PATH/mongodb-$TIMESTAMP
 
 # Upload to bucket
 /usr/bin/aws s3 cp --sse AES256 $PATH/mongodb-$TIMESTAMP.tar.gz s3://$BUCKET/
